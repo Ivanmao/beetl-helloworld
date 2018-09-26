@@ -1,6 +1,10 @@
 package com.guohong.beetl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.beetl.core.Configuration;
 import org.beetl.core.GroupTemplate;
@@ -30,6 +34,15 @@ public class App {
 			Template t = gt.getTemplate("/demo.html");
 			
 			t.binding("name", "guohong");
+			
+			List<String> list = new ArrayList<String>();
+			list.add("java");
+			list.add("python");
+			list.add("ruby");
+			Map<String, List<String>> map = new HashMap<String, List<String>>();
+			map.put("languages", list);
+			
+			t.binding(map);
 			
 			String str = t.render();
 			System.out.println(str);
